@@ -1,5 +1,11 @@
 # Markdown ToC
 
+## Table of Contents
+
+- [Markdown ToC](#markdown-toc)
+  - [Usage](#usage)
+  - [Contribution](#contribution)
+
 Simple bash script to generate table of contents from a markdown file (most commonly `README.md`)
 
 ## Usage
