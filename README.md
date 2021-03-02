@@ -21,3 +21,5 @@ To generate ToC, run following command. The ToC will be echoed to command line. 
 ## Contribution
 
 Any issues or improvements can be reported using GitHub issues.
+
+## Special heading with under_scores __main__ set_ `apply_code`
