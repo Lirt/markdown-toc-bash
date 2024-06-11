@@ -3,6 +3,7 @@
 FILE=${1:?No file was specified as first argument}
 
 declare -a TOC
+declare -A TOC_MAP
 CODE_BLOCK=0
 CODE_BLOCK_REGEX='^```'
 HEADING_REGEX='^#{1,}'
@@ -62,5 +63,14 @@ for LINE in "${TOC[@]}"; do
     LINK=$(tr -s "-" <<< "${LINK}")
 
     # Print in format [Very Special Heading](#very-special-heading)
-    echo "[${LINE#\#* }](#${LINK})"
+    # Make sure to add "-X" suffix with correct increment for headings that are repeated
+    INDEX=${TOC_MAP[${LINE}]}
+    if [[ "${INDEX}" != "" ]]; then
+        INDEX=$(( INDEX + 1 ))
+        TOC_MAP[${LINE}]=${INDEX}
+        echo "[${LINE#\#* }](#${LINK}-${INDEX})"
+    else
+        TOC_MAP[${LINE}]=0
+        echo "[${LINE#\#* }](#${LINK})"
+    fi
 done
